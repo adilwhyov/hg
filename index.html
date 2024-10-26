@@ -52,7 +52,7 @@
             max-width: 800px;
             margin: auto;
             padding: 20px;
-            border: 3px solid #ffcc00; /* Подчеркивание контейнера */
+            border: 3px solid #ffcc00;
             border-radius: 5px;
         }
         .video {
@@ -63,8 +63,8 @@
             padding: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             max-width: 300px;
-            display: inline-block; /* Упорядочить видео в строку */
-            margin-right: 20px; /* Отступ между видео */
+            display: inline-block;
+            margin-right: 20px;
         }
         .video img {
             width: 100%;
@@ -80,7 +80,7 @@
             width: 100%;
             margin-top: 20px;
             border-radius: 5px;
-            border: 2px dashed #ffcc00; /* Линия вокруг картинки */
+            border: 2px dashed #ffcc00;
         }
         footer {
             text-align: center;
@@ -95,15 +95,15 @@
 <header>
     <div class="logo">Мой YouTube</div>
     <div class="search-bar">
-        <input type="text" placeholder="Поиск...">
+        <input type="text" id="search-input" placeholder="Поиск видео..." onkeyup="filterVideos()">
     </div>
 </header>
 
 <nav>
-    <a href="#home">Главная</a>
-    <a href="#trending">Тренды</a>
-    <a href="#subscriptions">Подписки</a>
-    <a href="#library">Библиотека</a>
+    <a href="#home" onclick="loadContent('home')">Главная</a>
+    <a href="#trending" onclick="loadContent('trending')">Тренды</a>
+    <a href="#subscriptions" onclick="loadContent('subscriptions')">Подписки</a>
+    <a href="#library" onclick="loadContent('library')">Библиотека</a>
 </nav>
 
 <div class="container" id="content">
@@ -115,138 +115,119 @@
 </footer>
 
 <script>
-    const content = document.getElementById('content');
+    const videos = [
+        {
+            id: 'dQw4w9WgXcQ',
+            title: 'Rick Astley - Never Gonna Give You Up',
+            description: 'Классический хит 80-х.',
+        },
+        {
+            id: '3JZ_D3ELwOQ',
+            title: 'Charlie Puth - Attention',
+            description: 'Популярный трек 2017 года.',
+        },
+        {
+            id: 'VbfpW0pbvaU',
+            title: 'Maroon 5 - Sugar',
+            description: 'Зажигательный трек для настроения.',
+        },
+        {
+            id: 'ktvTqknDobU',
+            title: 'Ed Sheeran - Shape of You',
+            description: 'Хит, который слушают все!',
+        },
+        {
+            id: 'PtP_3gA38jw',
+            title: 'Dua Lipa - Don\'t Start Now',
+            description: 'Завораживающий поп-трек.',
+        },
+        {
+            id: '6X_6_M10cY4',
+            title: 'Billie Eilish - Bad Guy',
+            description: 'Необычный хит от Billie Eilish.',
+        },
+        {
+            id: '2Vv-BfVoq4g',
+            title: 'Ed Sheeran - Perfect',
+            description: 'Романтическая баллада от Эда Ширана.',
+        },
+        {
+            id: 'HgzGwKwLmgM',
+            title: 'Queen - Bohemian Rhapsody',
+            description: 'Классика от группы Queen.',
+        },
+        {
+            id: 'LsoLEjrDogU',
+            title: 'Imagine Dragons - Believer',
+            description: 'Мощный трек от Imagine Dragons.',
+        },
+        {
+            id: 'rgKj_JAzD50',
+            title: 'Taylor Swift - Blank Space',
+            description: 'Популярный хит от Тейлор Свифт.',
+        },
+    ];
 
     function loadContent(page) {
+        let contentHTML = '';
         if (page === 'home') {
-            content.innerHTML = `
-                <h2>Добро пожаловать на мой YouTube!</h2>
-                <p>Здесь вы найдете самые интересные видео!</p>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-                        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Видео 1">
-                        <h3>Rick Astley - Never Gonna Give You Up</h3>
-                        <p>Классический хит 80-х.</p>
-                    </a>
-                </div>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=3JZ_D3ELwOQ" target="_blank">
-                        <img src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Видео 2">
-                        <h3>Charlie Puth - Attention</h3>
-                        <p>Популярный трек 2017 года.</p>
-                    </a>
-                </div>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=VbfpW0pbvaU" target="_blank">
-                        <img src="https://img.youtube.com/vi/VbfpW0pbvaU/hqdefault.jpg" alt="Видео 3">
-                        <h3>Maroon 5 - Sugar</h3>
-                        <p>Зажигательный трек для настроения.</p>
-                    </a>
-                </div>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=ktvTqknDobU" target="_blank">
-                        <img src="https://img.youtube.com/vi/ktvTqknDobU/hqdefault.jpg" alt="Видео 4">
-                        <h3>Ed Sheeran - Shape of You</h3>
-                        <p>Хит, который слушают все!</p>
-                    </a>
-                </div>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=PtP_3gA38jw" target="_blank">
-                        <img src="https://img.youtube.com/vi/PtP_3gA38jw/hqdefault.jpg" alt="Видео 5">
-                        <h3>Dua Lipa - Don't Start Now</h3>
-                        <p>Завораживающий поп-трек.</p>
-                    </a>
-                </div>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=6X_6_M10cY4" target="_blank">
-                        <img src="https://img.youtube.com/vi/6X_6_M10cY4/hqdefault.jpg" alt="Видео 6">
-                        <h3>Billie Eilish - Bad Guy</h3>
-                        <p>Необычный хит от Billie Eilish.</p>
-                    </a>
-                </div>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=2Vv-BfVoq4g" target="_blank">
-                        <img src="https://img.youtube.com/vi/2Vv-BfVoq4g/hqdefault.jpg" alt="Видео 7">
-                        <h3>Ed Sheeran - Perfect</h3>
-                        <p>Романтическая баллада от Эда Ширана.</p>
-                    </a>
-                </div>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=HgzGwKwLmgM" target="_blank">
-                        <img src="https://img.youtube.com/vi/HgzGwKwLmgM/hqdefault.jpg" alt="Видео 8">
-                        <h3>Queen - Bohemian Rhapsody</h3>
-                        <p>Классика от группы Queen.</p>
-                    </a>
-                </div>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=LsoLEjrDogU" target="_blank">
-                        <img src="https://img.youtube.com/vi/LsoLEjrDogU/hqdefault.jpg" alt="Видео 9">
-                        <h3>Imagine Dragons - Believer</h3>
-                        <p>Мощный трек от Imagine Dragons.</p>
-                    </a>
-                </div>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=rgKj_JAzD50" target="_blank">
-                        <img src="https://img.youtube.com/vi/rgKj_JAzD50/hqdefault.jpg" alt="Видео 10">
-                        <h3>Taylor Swift - Blank Space</h3>
-                        <p>Популярный хит от Тейлор Свифт.</p>
-                    </a>
-                </div>
-                <img src="https://placekitten.com/400/200" alt="Смешной котик" class="cat-image">
-                <img src="https://placekitten.com/401/200" alt="Смешной котик" class="cat-image">
-                <img src="https://placekitten.com/402/200" alt="Смешной котик" class="cat-image">
-            `;
+            contentHTML += '<h2>Добро пожаловать на мой YouTube!</h2><p>Здесь вы найдете самые интересные видео!</p>';
+            videos.forEach(video => {
+                contentHTML += `
+                    <div class="video" data-title="${video.title.toLowerCase()}">
+                        <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank">
+                            <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}">
+                            <h3>${video.title}</h3>
+                            <p>${video.description}</p>
+                        </a>
+                    </div>
+                `;
+            });
         } else if (page === 'trending') {
-            content.innerHTML = `
-                <h2>Тренды</h2>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=6X_6_M10cY4" target="_blank">
-                        <img src="https://img.youtube.com/vi/6X_6_M10cY4/hqdefault.jpg" alt="Видео 11">
-                        <h3>Billie Eilish - Bad Guy</h3>
-                        <p>Необычный хит от Billie Eilish.</p>
+            contentHTML += '<h2>Тренды</h2>';
+            contentHTML += videos.slice(0, 5).map(video => `
+                <div class="video" data-title="${video.title.toLowerCase()}">
+                    <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank">
+                        <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}">
+                        <h3>${video.title}</h3>
+                        <p>${video.description}</p>
                     </a>
                 </div>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=PtP_3gA38jw" target="_blank">
-                        <img src="https://img.youtube.com/vi/PtP_3gA38jw/hqdefault.jpg" alt="Видео 12">
-                        <h3>Dua Lipa - Don't Start Now</h3>
-                        <p>Завораживающий поп-трек.</p>
-                    </a>
-                </div>
-                <img src="https://placekitten.com/403/200" alt="Смешной котик" class="cat-image">
-            `;
+            `).join('');
         } else if (page === 'subscriptions') {
-            content.innerHTML = `
-                <h2>Подписки</h2>
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=VbfpW0pbvaU" target="_blank">
-                        <img src="https://img.youtube.com/vi/VbfpW0pbvaU/hqdefault.jpg" alt="Видео 13">
-                        <h3>Maroon 5 - Sugar</h3>
-                        <p>Зажигательный трек для настроения.</p>
+            contentHTML += '<h2>Подписки</h2>';
+            contentHTML += videos.slice(5, 10).map(video => `
+                <div class="video" data-title="${video.title.toLowerCase()}">
+                    <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank">
+                        <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}">
+                        <h3>${video.title}</h3>
+                        <p>${video.description}</p>
                     </a>
                 </div>
-                <img src="https://placekitten.com/404/200" alt="Смешной котик" class="cat-image">
-            `;
+            `).join('');
         } else if (page === 'library') {
-            content.innerHTML = `
-                <h2>Библиотека</h2>
-                <p>Ваша библиотека пустая. Добавьте видео в подписки или сохраните их.</p>
-                <img src="https://placekitten.com/405/200" alt="Смешной котик" class="cat-image">
-            `;
+            contentHTML += '<h2>Библиотека</h2><p>Ваша библиотека пустая. Добавьте видео в подписки или сохраните их.</p>';
         }
+
+        document.getElementById('content').innerHTML = contentHTML;
+    }
+
+    function filterVideos() {
+        const input = document.getElementById('search-input').value.toLowerCase();
+        const videoElements = document.querySelectorAll('.video');
+
+        videoElements.forEach(video => {
+            const title = video.getAttribute('data-title');
+            if (title.includes(input)) {
+                video.style.display = '';
+            } else {
+                video.style.display = 'none';
+            }
+        });
     }
 
     // Загрузить главную страницу по умолчанию
     loadContent('home');
-
-    // Обработчик событий для переключения вкладок
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const page = this.getAttribute('href').substring(1);
-            loadContent(page);
-        });
-    });
 </script>
 
 </body>
