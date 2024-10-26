@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой YouTube</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(to right, #ff0000, #ff7300);
+            color: #fff;
+        }
+        header {
+            background-color: rgba(255, 0, 0, 0.8);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #ffcc00;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .search-bar {
+            flex: 1;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px;
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 3px solid #ffcc00; /* Подчеркивание контейнера */
+            border-radius: 5px;
+        }
+        .video {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            max-width: 300px;
+            display: inline-block; /* Упорядочить видео в строку */
+            margin-right: 20px; /* Отступ между видео */
+        }
+        .video img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .video h3 {
+            margin: 10px 0 5px 0;
+        }
+        .video p {
+            color: #ccc;
+        }
+        .cat-image {
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: 2px dashed #ffcc00; /* Линия вокруг картинки */
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Мой YouTube</div>
+    <div class="search-bar">
+        <input type="text" placeholder="Поиск...">
+    </div>
+</header>
+
+<nav>
+    <a href="#home">Главная</a>
+    <a href="#trending">Тренды</a>
+    <a href="#subscriptions">Подписки</a>
+    <a href="#library">Библиотека</a>
+</nav>
+
+<div class="container" id="content">
+    <!-- Контент будет загружаться здесь -->
+</div>
+
+<footer>
+    <p>© 2024 Мой YouTube</p>
+</footer>
+
+<script>
+    const content = document.getElementById('content');
+
+    function loadContent(page) {
+        if (page === 'home') {
+            content.innerHTML = `
+                <h2>Добро пожаловать на мой YouTube!</h2>
+                <p>Здесь вы найдете самые интересные видео!</p>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+                        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Видео 1">
+                        <h3>Rick Astley - Never Gonna Give You Up</h3>
+                        <p>Классический хит 80-х.</p>
+                    </a>
+                </div>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=3JZ_D3ELwOQ" target="_blank">
+                        <img src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Видео 2">
+                        <h3>Charlie Puth - Attention</h3>
+                        <p>Популярный трек 2017 года.</p>
+                    </a>
+                </div>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=VbfpW0pbvaU" target="_blank">
+                        <img src="https://img.youtube.com/vi/VbfpW0pbvaU/hqdefault.jpg" alt="Видео 3">
+                        <h3>Maroon 5 - Sugar</h3>
+                        <p>Зажигательный трек для настроения.</p>
+                    </a>
+                </div>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=ktvTqknDobU" target="_blank">
+                        <img src="https://img.youtube.com/vi/ktvTqknDobU/hqdefault.jpg" alt="Видео 4">
+                        <h3>Ed Sheeran - Shape of You</h3>
+                        <p>Хит, который слушают все!</p>
+                    </a>
+                </div>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=PtP_3gA38jw" target="_blank">
+                        <img src="https://img.youtube.com/vi/PtP_3gA38jw/hqdefault.jpg" alt="Видео 5">
+                        <h3>Dua Lipa - Don't Start Now</h3>
+                        <p>Завораживающий поп-трек.</p>
+                    </a>
+                </div>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=6X_6_M10cY4" target="_blank">
+                        <img src="https://img.youtube.com/vi/6X_6_M10cY4/hqdefault.jpg" alt="Видео 6">
+                        <h3>Billie Eilish - Bad Guy</h3>
+                        <p>Необычный хит от Billie Eilish.</p>
+                    </a>
+                </div>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=2Vv-BfVoq4g" target="_blank">
+                        <img src="https://img.youtube.com/vi/2Vv-BfVoq4g/hqdefault.jpg" alt="Видео 7">
+                        <h3>Ed Sheeran - Perfect</h3>
+                        <p>Романтическая баллада от Эда Ширана.</p>
+                    </a>
+                </div>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=HgzGwKwLmgM" target="_blank">
+                        <img src="https://img.youtube.com/vi/HgzGwKwLmgM/hqdefault.jpg" alt="Видео 8">
+                        <h3>Queen - Bohemian Rhapsody</h3>
+                        <p>Классика от группы Queen.</p>
+                    </a>
+                </div>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=LsoLEjrDogU" target="_blank">
+                        <img src="https://img.youtube.com/vi/LsoLEjrDogU/hqdefault.jpg" alt="Видео 9">
+                        <h3>Imagine Dragons - Believer</h3>
+                        <p>Мощный трек от Imagine Dragons.</p>
+                    </a>
+                </div>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=rgKj_JAzD50" target="_blank">
+                        <img src="https://img.youtube.com/vi/rgKj_JAzD50/hqdefault.jpg" alt="Видео 10">
+                        <h3>Taylor Swift - Blank Space</h3>
+                        <p>Популярный хит от Тейлор Свифт.</p>
+                    </a>
+                </div>
+                <img src="https://placekitten.com/400/200" alt="Смешной котик" class="cat-image">
+                <img src="https://placekitten.com/401/200" alt="Смешной котик" class="cat-image">
+                <img src="https://placekitten.com/402/200" alt="Смешной котик" class="cat-image">
+            `;
+        } else if (page === 'trending') {
+            content.innerHTML = `
+                <h2>Тренды</h2>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=6X_6_M10cY4" target="_blank">
+                        <img src="https://img.youtube.com/vi/6X_6_M10cY4/hqdefault.jpg" alt="Видео 11">
+                        <h3>Billie Eilish - Bad Guy</h3>
+                        <p>Необычный хит от Billie Eilish.</p>
+                    </a>
+                </div>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=PtP_3gA38jw" target="_blank">
+                        <img src="https://img.youtube.com/vi/PtP_3gA38jw/hqdefault.jpg" alt="Видео 12">
+                        <h3>Dua Lipa - Don't Start Now</h3>
+                        <p>Завораживающий поп-трек.</p>
+                    </a>
+                </div>
+                <img src="https://placekitten.com/403/200" alt="Смешной котик" class="cat-image">
+            `;
+        } else if (page === 'subscriptions') {
+            content.innerHTML = `
+                <h2>Подписки</h2>
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=VbfpW0pbvaU" target="_blank">
+                        <img src="https://img.youtube.com/vi/VbfpW0pbvaU/hqdefault.jpg" alt="Видео 13">
+                        <h3>Maroon 5 - Sugar</h3>
+                        <p>Зажигательный трек для настроения.</p>
+                    </a>
+                </div>
+                <img src="https://placekitten.com/404/200" alt="Смешной котик" class="cat-image">
+            `;
+        } else if (page === 'library') {
+            content.innerHTML = `
+                <h2>Библиотека</h2>
+                <p>Ваша библиотека пустая. Добавьте видео в подписки или сохраните их.</p>
+                <img src="https://placekitten.com/405/200" alt="Смешной котик" class="cat-image">
+            `;
+        }
+    }
+
+    // Загрузить главную страницу по умолчанию
+    loadContent('home');
+
+    // Обработчик событий для переключения вкладок
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const page = this.getAttribute('href').substring(1);
+            loadContent(page);
+        });
+    });
+</script>
+
+</body>
+</html>
